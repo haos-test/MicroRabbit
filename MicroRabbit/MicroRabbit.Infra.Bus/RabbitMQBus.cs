@@ -39,7 +39,7 @@ namespace MicroRabbit.Infra.Bus
             using (var channel = connection.CreateModel())
             {
                 var eventName = @event.GetType().Name;
-                channel.QueueDeclare("eventName", false, false, false, null);
+                channel.QueueDeclare(eventName, false, false, false, null);
                 string message = JsonConvert.SerializeObject(@event);
                 var body = Encoding.UTF8.GetBytes(message);
 
